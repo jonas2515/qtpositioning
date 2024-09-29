@@ -125,7 +125,7 @@ QGeoPositionInfoSource::Error QGeoPositionInfoSourceGeoclue2::error() const
 void QGeoPositionInfoSourceGeoclue2::startUpdates()
 {
     if (m_running) {
-        qCWarning(lcPositioningGeoclue2) << "Already running";
+        qCDebug(lcPositioningGeoclue2) << "Already running";
         return;
     }
 
@@ -146,7 +146,7 @@ void QGeoPositionInfoSourceGeoclue2::startUpdates()
 void QGeoPositionInfoSourceGeoclue2::stopUpdates()
 {
     if (!m_running) {
-        qCWarning(lcPositioningGeoclue2) << "Already stopped";
+        qCDebug(lcPositioningGeoclue2) << "Already stopped";
         return;
     }
 
