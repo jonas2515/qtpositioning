@@ -78,8 +78,8 @@ void QGeoPositionInfoSourceGeoclue2::setUpdateInterval(int msec)
 
 QGeoPositionInfo QGeoPositionInfoSourceGeoclue2::lastKnownPosition(bool fromSatellitePositioningMethodsOnly) const
 {
-    if (fromSatellitePositioningMethodsOnly && !m_lastPositionFromSatellite)
-        return QGeoPositionInfo();
+    Q_UNUSED(fromSatellitePositioningMethodsOnly);
+
     return m_lastPosition;
 }
 
@@ -402,10 +402,8 @@ void QGeoPositionInfoSourceGeoclue2::handleNewLocation(const QDBusObjectPath &ol
         }
 
         const auto accuracy = location.accuracy();
-        // We assume that an accuracy as 0.0 means that it comes from a sattelite.
-        m_lastPositionFromSatellite = qFuzzyCompare(accuracy, 0.0);
-
         m_lastPosition.setAttribute(QGeoPositionInfo::HorizontalAccuracy, accuracy);
+
         const auto speed = location.speed();
         if (speed >= 0.0)
             m_lastPosition.setAttribute(QGeoPositionInfo::GroundSpeed, speed);

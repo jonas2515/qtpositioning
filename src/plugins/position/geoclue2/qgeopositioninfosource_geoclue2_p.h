@@ -51,7 +51,6 @@ private:
     OrgFreedesktopGeoClue2ManagerInterface m_manager;
     QPointer<OrgFreedesktopGeoClue2ClientInterface> m_client;
     bool m_running = false;
-    bool m_lastPositionFromSatellite = false;
     QGeoPositionInfoSource::Error m_error = NoError;
     QGeoPositionInfo m_lastPosition;
 };
