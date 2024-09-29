@@ -55,6 +55,9 @@ QGeoPositionInfoSourceGeoclue2::QGeoPositionInfoSourceGeoclue2(QObject *parent)
 {
     qDBusRegisterMetaType<Timestamp>();
 
+    //by default use all methods
+    setPreferredPositioningMethods(AllPositioningMethods);
+
     restoreLastPosition();
 
     m_requestTimer->setSingleShot(true);
